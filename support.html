@@ -1,74 +1,306 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Clearance Compass Support</title>
-  <meta name="description" content="Support for Clearance Compass" />
+  <meta name="description" content="Support for Clearance Compass">
   <style>
-    :root {
-      --bg: #f5f8fb;
-      --card: #ffffff;
-      --text: #112033;
-      --muted: #53657a;
-      --line: #dde6ef;
-      --link: #0b63d8;
-    }
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      background: linear-gradient(180deg, #f7fbff 0%, var(--bg) 100%);
-      color: var(--text);
-      font: 16px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    }
-    .wrap {
-      max-width: 760px;
-      margin: 0 auto;
-      padding: 56px 20px 72px;
-    }
-    .card {
-      background: var(--card);
-      border: 1px solid var(--line);
-      border-radius: 24px;
-      padding: 32px;
-      box-shadow: 0 12px 40px rgba(17, 32, 51, 0.06);
-    }
-    h1 {
-      margin: 0 0 8px;
-      font-size: 2rem;
-      line-height: 1.15;
-    }
-    h2 {
-      margin: 28px 0 10px;
-      font-size: 1.05rem;
-    }
-    p, li { color: var(--muted); }
-    .eyebrow {
-      display: inline-block;
-      padding: 8px 12px;
-      border-radius: 999px;
-      background: #edf5ff;
-      color: #184d8c;
-      font-size: 0.82rem;
-      font-weight: 600;
-      margin-bottom: 18px;
-    }
-    a { color: var(--link); text-decoration: none; }
-    a:hover { text-decoration: underline; }
-    ul { padding-left: 18px; }
-    .toplink { margin-bottom: 18px; font-size: 0.95rem; }
+:root {
+  --bg: #eef7f4;
+  --bg-2: #f7fbff;
+  --card: rgba(255, 255, 255, 0.92);
+  --text: #102033;
+  --muted: #53657a;
+  --soft: #7a8ba0;
+  --line: #dce8f0;
+  --brand: #123a56;
+  --brand-2: #0b63d8;
+  --accent: #18a7dc;
+  --shadow: 0 24px 70px rgba(16, 32, 51, 0.12);
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 82% 18%, rgba(117, 170, 238, 0.18), transparent 32rem),
+    radial-gradient(circle at 14% 72%, rgba(50, 190, 170, 0.14), transparent 30rem),
+    linear-gradient(180deg, var(--bg-2) 0%, var(--bg) 100%);
+  color: var(--text);
+  font: 16px/1.7 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 42px;
+  left: 50%;
+  width: min(86vw, 1040px);
+  height: 8px;
+  transform: translateX(-50%);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.9);
+  pointer-events: none;
+}
+
+a {
+  color: var(--brand-2);
+  text-decoration: none;
+  font-weight: 650;
+}
+
+a:hover { text-decoration: underline; }
+
+.wrap {
+  width: min(100%, 880px);
+  margin: 0 auto;
+  padding: 80px 20px 72px;
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.brandmark {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--brand);
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 0.86rem;
+}
+
+.brandmark-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, var(--accent), #1766d8);
+  box-shadow: 0 0 0 5px rgba(24, 167, 220, 0.12);
+}
+
+.home-button,
+.link-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 10px 16px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.88);
+  color: var(--brand);
+  box-shadow: 0 10px 28px rgba(16, 32, 51, 0.06);
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.home-button:hover,
+.link-button:hover {
+  transform: translateY(-1px);
+  text-decoration: none;
+  box-shadow: 0 14px 34px rgba(16, 32, 51, 0.10);
+}
+
+.hero {
+  margin-bottom: 24px;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.88);
+  color: var(--brand);
+  font-size: 0.82rem;
+  font-weight: 850;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  box-shadow: 0 8px 22px rgba(16, 32, 51, 0.05);
+}
+
+h1 {
+  margin: 22px 0 12px;
+  max-width: 720px;
+  font-size: clamp(2.35rem, 7vw, 4.6rem);
+  line-height: 0.98;
+  letter-spacing: -0.055em;
+}
+
+.lead {
+  max-width: 760px;
+  margin: 0;
+  color: #435a72;
+  font-size: clamp(1.08rem, 2.4vw, 1.42rem);
+  line-height: 1.35;
+}
+
+.card {
+  margin-top: 36px;
+  background: var(--card);
+  border: 1px solid rgba(220, 232, 240, 0.92);
+  border-radius: 28px;
+  padding: clamp(24px, 5vw, 42px);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(12px);
+}
+
+.card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 18px;
+  padding-bottom: 22px;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 4px;
+}
+
+.card-title {
+  margin: 0;
+  font-size: clamp(1.65rem, 4vw, 2.25rem);
+  line-height: 1.08;
+  letter-spacing: -0.035em;
+}
+
+.updated {
+  margin: 8px 0 0;
+  color: var(--soft);
+  font-size: 0.95rem;
+}
+
+h2 {
+  margin: 30px 0 10px;
+  font-size: 1.12rem;
+  line-height: 1.25;
+  letter-spacing: -0.015em;
+}
+
+p, li { color: var(--muted); }
+
+ul { padding-left: 1.25rem; }
+
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  margin: 24px 0 8px;
+}
+
+.info-box {
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 16px;
+  background: #f8fbfd;
+}
+
+.info-box strong {
+  display: block;
+  color: var(--text);
+  margin-bottom: 4px;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 30px;
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
+}
+
+.primary-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 12px 18px;
+  border-radius: 16px;
+  background: #17a9df;
+  color: white;
+  font-weight: 850;
+  text-decoration: none;
+  box-shadow: 0 14px 26px rgba(23, 169, 223, 0.24);
+}
+
+.primary-button:hover {
+  text-decoration: none;
+  background: #1299ca;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 26px;
+  color: #8a98a8;
+  font-size: 0.92rem;
+}
+
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+@media (max-width: 680px) {
+  body::before { top: 22px; }
+  .wrap { padding-top: 54px; }
+  .topbar, .card-header, .footer { flex-direction: column; align-items: flex-start; }
+  .home-button { width: 100%; }
+  .info-grid { grid-template-columns: 1fr; }
+}
   </style>
 </head>
 <body>
   <main class="wrap">
-    <p class="toplink"><a href="index.html">← Back to home</a></p>
-    <section class="card">
-      <div class="eyebrow">Clearance Compass</div>
-      <h1>Support</h1>
-      <p>Need help with Clearance Compass? Use the details below to get support, report a bug, suggest an improvement, or ask a question.</p>
+    <nav class="topbar" aria-label="Page navigation">
+      <a class="brandmark" href="index.html" aria-label="Clearance Compass home">
+        <span class="brandmark-dot" aria-hidden="true"></span>
+        Clearance Compass
+      </a>
+      <a class="home-button" href="index.html">← Back to home</a>
+    </nav>
+
+    <header class="hero">
+      <span class="eyebrow">Support</span>
+      <h1>How can we help?</h1>
+      <p class="lead">Get help with Clearance Compass, report a bug, suggest an improvement, or flag port and clearance information that may need review.</p>
+    </header>
+
+    <section class="card" aria-labelledby="support-title">
+      <div class="card-header">
+        <div>
+          <h2 id="support-title" class="card-title">Support for Clearance Compass</h2>
+          <p class="updated">For app questions, bug reports, and data corrections.</p>
+        </div>
+        <a class="link-button" href="privacy.html">Privacy Policy</a>
+      </div>
 
       <h2>Contact</h2>
       <p>Email: <a href="mailto:kjeldkarim@gmail.com">kjeldkarim@gmail.com</a></p>
+
+      <div class="info-grid" aria-label="Support options">
+        <div class="info-box">
+          <strong>Bug reports</strong>
+          <span>Include device, operating system, app version, screenshots, and steps to reproduce.</span>
+        </div>
+        <div class="info-box">
+          <strong>Data corrections</strong>
+          <span>Include the port name, country, and what appears incorrect or outdated.</span>
+        </div>
+      </div>
 
       <h2>FAQ</h2>
       <p><strong>What is Clearance Compass?</strong><br>
@@ -91,9 +323,19 @@
       <p><strong>How do I request a feature?</strong><br>
       Feature suggestions are welcome by email.</p>
 
-      <h2>Privacy</h2>
-      <p>Read the <a href="privacy.html">Privacy Policy</a>.</p>
+      <div class="actions">
+        <a class="primary-button" href="mailto:kjeldkarim@gmail.com">Email support</a>
+        <a class="link-button" href="index.html">Back to home</a>
+      </div>
     </section>
+
+    <footer class="footer">
+      <span>Clearance Compass</span>
+      <span class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="privacy.html">Privacy</a>
+      </span>
+    </footer>
   </main>
 </body>
 </html>
