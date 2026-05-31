@@ -1,0 +1,321 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Email confirmed | Clearance Compass</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16.png">
+  <link rel="apple-touch-icon" href="images/favicon-180.png">
+  <meta name="description" content="Your Clearance Compass email address has been confirmed. You can now return to the app and sign in." />
+  <style>
+    :root {
+      --bg: #f5f9fc;
+      --surface: #ffffff;
+      --text: #102033;
+      --muted: #526579;
+      --muted-2: #738497;
+      --line: #dbe6ef;
+      --brand: #0b63d8;
+      --brand-2: #0ea5e9;
+      --brand-dark: #084d9f;
+      --brand-soft: #eaf3ff;
+      --green-soft: #eafaf3;
+      --navy: #0b1f33;
+      --shadow: 0 24px 70px rgba(16, 32, 51, 0.12);
+      --shadow-soft: 0 14px 40px rgba(16, 32, 51, 0.08);
+      --radius-lg: 26px;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 12% 8%, rgba(11, 99, 216, 0.16), transparent 34rem),
+        radial-gradient(circle at 88% 22%, rgba(16, 185, 129, 0.10), transparent 28rem),
+        linear-gradient(180deg, #f8fbff 0%, var(--bg) 100%);
+      font: 16px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+    .page {
+      width: min(1160px, calc(100% - 40px));
+      min-height: 100vh;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+    }
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 18px 0;
+    }
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+      letter-spacing: -0.025em;
+    }
+    .brand-logo {
+      width: 42px;
+      height: 42px;
+      object-fit: contain;
+      filter: drop-shadow(0 8px 18px rgba(11, 99, 216, 0.18));
+    }
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px;
+      border: 1px solid rgba(219, 230, 239, 0.88);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.72);
+      color: var(--muted);
+      font-size: 0.94rem;
+      box-shadow: 0 10px 30px rgba(16, 32, 51, 0.05);
+    }
+    nav a {
+      padding: 8px 12px;
+      border-radius: 999px;
+    }
+    nav a:hover {
+      color: var(--text);
+      background: #fff;
+    }
+    main {
+      flex: 1;
+      display: grid;
+      place-items: center;
+      padding: 54px 0 78px;
+    }
+    .confirmation-wrap {
+      width: min(760px, 100%);
+      text-align: center;
+    }
+    .card {
+      position: relative;
+      overflow: hidden;
+      padding: clamp(30px, 6vw, 54px);
+      border: 1px solid rgba(219, 230, 239, 0.96);
+      border-radius: 34px;
+      background: rgba(255, 255, 255, 0.86);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(18px);
+    }
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background:
+        radial-gradient(circle at top right, rgba(14, 165, 233, 0.18), transparent 18rem),
+        radial-gradient(circle at bottom left, rgba(16, 185, 129, 0.12), transparent 16rem);
+    }
+    .card-inner {
+      position: relative;
+      z-index: 1;
+    }
+    .hero-logo {
+      width: min(330px, 82vw);
+      margin: 0 auto 24px;
+    }
+    .status-icon {
+      display: grid;
+      place-items: center;
+      width: 72px;
+      height: 72px;
+      margin: 0 auto 22px;
+      border-radius: 24px;
+      background: var(--green-soft);
+      color: #0f7a4f;
+      font-size: 38px;
+      font-weight: 900;
+      box-shadow: 0 14px 34px rgba(15, 122, 79, 0.12);
+    }
+    .status-icon.error {
+      background: #fff1f2;
+      color: #be123c;
+      box-shadow: 0 14px 34px rgba(190, 18, 60, 0.10);
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      width: fit-content;
+      margin-bottom: 16px;
+      padding: 8px 12px;
+      border: 1px solid #cfe2f7;
+      border-radius: 999px;
+      background: var(--brand-soft);
+      color: #174d8c;
+      font-size: 0.84rem;
+      font-weight: 800;
+    }
+    h1 {
+      margin: 0 0 14px;
+      font-size: clamp(2.25rem, 6vw, 4.3rem);
+      line-height: 0.98;
+      letter-spacing: -0.065em;
+    }
+    .lead {
+      max-width: 610px;
+      margin: 0 auto;
+      color: var(--muted);
+      font-size: clamp(1.04rem, 2vw, 1.2rem);
+    }
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 30px;
+    }
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      padding: 0 19px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      font-weight: 800;
+      transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
+    }
+    .button:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 12px 28px rgba(16, 32, 51, 0.12);
+    }
+    .button.primary {
+      color: #fff;
+      background: linear-gradient(135deg, var(--brand), var(--brand-2));
+    }
+    .button.secondary {
+      color: var(--text);
+      background: #fff;
+      border-color: var(--line);
+    }
+    .note {
+      max-width: 560px;
+      margin: 20px auto 0;
+      color: var(--muted-2);
+      font-size: 0.94rem;
+    }
+    .details {
+      display: none;
+      max-width: 560px;
+      margin: 22px auto 0;
+      padding: 14px 16px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.72);
+      color: var(--muted);
+      text-align: left;
+      font-size: 0.94rem;
+      word-break: break-word;
+    }
+    footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 34px 0 46px;
+      color: #6a7b8f;
+      border-top: 1px solid var(--line);
+      font-size: 0.95rem;
+    }
+    .footer-links {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+    .footer-links a:hover { color: var(--text); }
+    @media (max-width: 620px) {
+      .page { width: min(100% - 28px, 1160px); }
+      header { align-items: flex-start; flex-direction: column; }
+      nav { width: 100%; justify-content: space-between; overflow-x: auto; }
+      main { padding: 36px 0 56px; }
+      .card { border-radius: 28px; }
+      footer { align-items: flex-start; flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <a class="brand" href="index.html" aria-label="Clearance Compass home">
+        <img class="brand-logo" src="images/Clearance_Compass_LOGO_Only.png" alt="Clearance Compass logo" />
+        <span>Clearance Compass</span>
+      </a>
+      <nav aria-label="Main navigation">
+        <a href="index.html#about">About</a>
+        <a href="index.html#screens">Screens</a>
+        <a href="support.html">Support</a>
+        <a href="privacy.html">Privacy</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="confirmation-wrap" aria-labelledby="confirmation-title">
+        <div class="card">
+          <div class="card-inner">
+            <img class="hero-logo" src="images/Clearance_Compass_LOGO_TEXT.png" alt="Clearance Compass" />
+            <div id="statusIcon" class="status-icon" aria-hidden="true">✓</div>
+            <div class="eyebrow">Account confirmation</div>
+            <h1 id="confirmation-title">Email confirmed</h1>
+            <p id="confirmation-message" class="lead">
+              Your Clearance Compass account has been activated. You can now return to the app and sign in.
+            </p>
+            <div class="actions">
+              <a class="button primary" href="index.html">Back to website</a>
+              <a class="button secondary" href="support.html">Need help?</a>
+            </div>
+            <p class="note">
+              If the app is already open, close this browser tab and continue in Clearance Compass.
+            </p>
+            <div id="errorDetails" class="details" role="status"></div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <span>© 2026 Clearance Compass. All rights reserved.</span>
+      <div class="footer-links">
+        <a href="support.html">Support</a>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="mailto:kjeldkarim@gmail.com">Contact</a>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    (function () {
+      var params = new URLSearchParams(window.location.search);
+      var hashParams = new URLSearchParams(window.location.hash.replace(/^#/, ""));
+      var error = params.get("error") || hashParams.get("error");
+      var errorCode = params.get("error_code") || hashParams.get("error_code");
+      var errorDescription = params.get("error_description") || hashParams.get("error_description");
+
+      if (!error && !errorCode && !errorDescription) return;
+
+      document.title = "Confirmation issue | Clearance Compass";
+      document.getElementById("statusIcon").textContent = "!";
+      document.getElementById("statusIcon").classList.add("error");
+      document.getElementById("confirmation-title").textContent = "Confirmation issue";
+      document.getElementById("confirmation-message").textContent =
+        "We could not complete the email confirmation from this link. The link may have expired or already been used.";
+
+      var details = document.getElementById("errorDetails");
+      var detailText = [errorCode, errorDescription || error].filter(Boolean).join(" — ");
+      if (detailText) {
+        details.textContent = detailText;
+        details.style.display = "block";
+      }
+    })();
+  </script>
+</body>
+</html>
